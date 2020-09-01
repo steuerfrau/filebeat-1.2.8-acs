@@ -18,10 +18,10 @@ filebeat.inputs:
 # you can use different inputs for various configurations.
 # Below are the input specific configurations.
 
-- type: log4j-cs
+- type: log
 
   # Change to true to enable this input configuration.
-  enabled: false
+  enabled: true
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
@@ -77,11 +77,12 @@ filebeat.config.modules:
 
 # ======================= Elasticsearch template setting =======================
 
-setup.template.settings:
-  index.number_of_shards: 1
-  #index.codec: best_compression
-  #_source.enabled: false
+# setup.template.settings:
+#   index.number_of_shards: 1
+#   #index.codec: best_compression
+#   #_source.enabled: false
 
+setup.template.enabled: false
 
 # ================================== General ===================================
 
@@ -145,23 +146,23 @@ setup.kibana:
 # Configure what output to use when sending the data collected by the beat.
 
 # ---------------------------- Elasticsearch Output ----------------------------
-output.elasticsearch:
-  # Array of hosts to connect to.
-  hosts: ["http://10.131.255.208:9201", "http://10.131.255.194:9201", "http://10.131.255.186:9201"]
-
-  # Protocol - either `http` (default) or `https`.
-  #protocol: "https"
-
-  # Authentication credentials - either API key or username/password.
-  #api_key: "id:api_key"
-
-  username: "logstash_internal"
-  password: "${logstash_internal}"
-
+# output.elasticsearch:
+#   # Array of hosts to connect to.
+#   hosts: ["http://10.131.255.208:9201", "http://10.131.255.194:9201", "http://10.131.255.186:9201"]
+# 
+#   # Protocol - either `http` (default) or `https`.
+#   #protocol: "https"
+# 
+#   # Authentication credentials - either API key or username/password.
+#   #api_key: "id:api_key"
+# 
+#   username: "logstash_internal"
+#   password: "${logstash_internal}"
+# 
 # ------------------------------ Logstash Output -------------------------------
-#output.logstash:
+output.logstash:
   # The Logstash hosts
-  #hosts: ["localhost:5044"]
+  hosts: ["10.135.255.17:5150"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
